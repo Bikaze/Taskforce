@@ -4,6 +4,9 @@ const RegisterPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
+        <div className="flex justify-center">
+          <img className="h-16 w-auto" src="/logo.png" alt="Majestic Wallet" />
+        </div>
         <div>
           <h1 className="text-3xl font-bold text-center text-gray-900">
             Create Account

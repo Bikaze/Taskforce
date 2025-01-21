@@ -1,15 +1,10 @@
-import { Menu } from "lucide-react";
-import { useState } from "react";
 import BalanceCard from "../components/BalanceCard";
 import BudgetCard from "../components/BudgetCard";
 import CategoryItem from "../components/CategoryItem";
 import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
 import TransactionTable from "../components/TransactionTable";
 
 const Dashboard = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
   const transactions = [
     {
       name: "Salary Deposit",
@@ -43,73 +38,46 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex relative">
-      {/* Mobile Menu Button */}
-      <button
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className="lg:hidden fixed top-4 left-4 z-40 p-2 rounded-md bg-white shadow-md"
-      >
-        <Menu className="h-6 w-6" />
-      </button>
+    <>
+      <Header user="Adrian" />
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 lg:gap-8">
+        <div className="xl:col-span-2 space-y-4">
+          <BalanceCard
+            accounts={accounts}
+            totalBalance={accounts.reduce(
+              (sum, account) => sum + account.balance,
+              0
+            )}
+          />
+          <div className="overflow-x-auto bg-white rounded-xl shadow-sm">
+            <TransactionTable transactions={transactions} />
+          </div>
+        </div>
 
-      {/* Sidebar */}
-      <Sidebar isSidebarOpen={isSidebarOpen} />
+        <div className="space-y-4 lg:space-y-6">
+          <div className="flex justify-between items-center">
+            <h3 className="text-xl font-semibold">My Budgets</h3>
+            <button className="text-blue-500 hover:text-blue-600 transition-colors">
+              + Create Budget
+            </button>
+          </div>
 
-      {/* Mobile Overlay */}
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 lg:hidden z-20"
-          onClick={() => setIsSidebarOpen(false)}
-        />
-      )}
+          <BudgetCard budgets={budgets} />
 
-      {/* Main Content */}
-      <main className="flex-1 p-4 lg:p-8 pt-16 lg:pt-8 w-full overflow-x-hidden">
-        <div className="max-w-7xl mx-auto">
-          <Header user="Adrian" />
-
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 lg:gap-8">
-            {/* Main Content Area */}
-            <div className="xl:col-span-2 space-y-4">
-              <BalanceCard
-                accounts={accounts}
-                totalBalance={accounts.reduce(
-                  (sum, account) => sum + account.balance,
-                  0
-                )}
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Top Categories</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-4">
+              <CategoryItem name="Travel" count={9} color="bg-green-100" />
+              <CategoryItem
+                name="Food and Drink"
+                count={9}
+                color="bg-blue-100"
               />
-              <div className="overflow-x-auto bg-white rounded-xl shadow-sm">
-                <TransactionTable transactions={transactions} />
-              </div>
-            </div>
-
-            {/* Sidebar Content */}
-            <div className="space-y-4 lg:space-y-6">
-              <div className="flex justify-between items-center">
-                <h3 className="text-xl font-semibold">My Budgets</h3>
-                <button className="text-blue-500 hover:text-blue-600 transition-colors">
-                  + Create Budget
-                </button>
-              </div>
-
-              <BudgetCard budgets={budgets} />
-
-              <div>
-                <h3 className="text-xl font-semibold mb-4">Top Categories</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-4">
-                  <CategoryItem name="Travel" count={9} color="bg-green-100" />
-                  <CategoryItem
-                    name="Food and Drink"
-                    count={9}
-                    color="bg-blue-100"
-                  />
-                </div>
-              </div>
             </div>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </>
   );
 };
 

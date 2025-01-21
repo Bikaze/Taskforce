@@ -10,7 +10,7 @@ const Dashboard = () => {
     {
       name: "Salary Deposit",
       amount: 5000.0,
-      type: "income",
+      type: "income" as "income", // Ensure type is correctly typed
       date: "Wed, Apr 24, 5:30 AM",
       bank: "BK",
       category: "Salary",
@@ -18,7 +18,7 @@ const Dashboard = () => {
     {
       name: "Uber Ride",
       amount: 25.4,
-      type: "expense",
+      type: "expense" as "expense", // Ensure type is correctly typed
       date: "Wed, Apr 24, 5:30 AM",
       bank: "Equity",
       category: "Travel",

@@ -1,11 +1,5 @@
-interface Transaction {
-  name: string;
-  amount: number;
-  date: string;
-  bank: string;
-  category: string;
-  type: "income" | "expense";
-}
+import { Transaction } from "../types/transaction";
+import { format } from "date-fns";
 
 interface TransactionTableProps {
   transactions: Transaction[];
@@ -14,58 +8,57 @@ interface TransactionTableProps {
 const TransactionTable: React.FC<TransactionTableProps> = ({
   transactions,
 }) => (
-  <div className="bg-white p-4 lg:p-6 rounded-xl shadow-sm">
-    <div className="flex justify-between items-center mb-6">
-      <h3 className="text-lg lg:text-xl font-semibold">Recent transactions</h3>
-      <button className="text-blue-500">View all</button>
-    </div>
-
-    <div className="overflow-x-auto">
-      <table className="w-full min-w-[640px]">
-        <thead className="text-left text-gray-500">
-          <tr>
-            <th className="pb-4">Transaction</th>
-            <th className="pb-4">Amount</th>
-            <th className="pb-4">Date</th>
-            <th className="pb-4">Bank</th>
-            <th className="pb-4">Category</th>
-          </tr>
-        </thead>
-        <tbody>
-          {transactions.map((transaction, index) => (
-            <tr key={index} className="border-t border-gray-100">
-              <td className="py-4">{transaction.name}</td>
-              <td
-                className={`py-4 ${
-                  transaction.type === "expense"
-                    ? "text-red-500"
-                    : "text-green-500"
+  <div className="overflow-x-auto">
+    <table className="w-full min-w-[800px]">
+      <thead className="text-left text-gray-500 border-b">
+        <tr>
+          <th className="p-4">Note</th>
+          <th className="p-4">Amount</th>
+          <th className="p-4">Type</th>
+          <th className="p-4">Date</th>
+          <th className="p-4">Budget</th>
+          <th className="p-4">Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        {transactions.map((transaction) => (
+          <tr key={transaction.id} className="border-b hover:bg-gray-50">
+            <td className="p-4">{transaction.note}</td>
+            <td
+              className={`p-4 ${
+                transaction.type === "EXPENSE"
+                  ? "text-red-500"
+                  : "text-green-500"
+              }`}
+            >
+              {transaction.amount.toLocaleString()} RWF
+            </td>
+            <td className="p-4">
+              <span
+                className={`px-3 py-1 rounded-full text-sm ${
+                  transaction.type === "EXPENSE"
+                    ? "bg-red-100 text-red-600"
+                    : "bg-green-100 text-green-600"
                 }`}
               >
-                ${Math.abs(transaction.amount).toFixed(2)}
-              </td>
-              <td className="py-4 text-gray-500">{transaction.date}</td>
-              <td className="py-4">
-                <span
-                  className={`px-3 py-1 rounded-full text-sm ${
-                    transaction.type === "expense"
-                      ? "bg-red-100 text-red-600"
-                      : "bg-green-100 text-green-600"
-                  }`}
-                >
-                  {transaction.bank}
-                </span>
-              </td>
-              <td className="py-4">
-                <span className="px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-600">
-                  {transaction.category}
-                </span>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+                {transaction.type}
+              </span>
+            </td>
+            <td className="p-4 text-gray-500">
+              {format(new Date(transaction.date), "MMM dd, yyyy HH:mm")}
+            </td>
+            <td className="p-4 text-gray-500">
+              {transaction.budgetId ? "Linked" : "No Budget"}
+            </td>
+            <td className="p-4">
+              <span className="px-3 py-1 rounded-full bg-blue-100 text-blue-600 text-sm">
+                {transaction.categoryId ? "Categorized" : "Uncategorized"}
+              </span>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   </div>
 );
 

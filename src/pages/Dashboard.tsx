@@ -74,7 +74,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Header user="Adrian" />
+      <Header />
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 lg:gap-8">
         <div className="xl:col-span-2 space-y-4">
           <BalanceCard

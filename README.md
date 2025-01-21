@@ -1,50 +1,76 @@
-# React + TypeScript + Vite
+# Majestic Wallet
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern financial management application built with React and TypeScript.
 
-Currently, two official plugins are available:
+## 🚀 Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Visit [majesticwallet.bikaze.tech](https://majesticwallet.bikaze.tech)
 
-## Expanding the ESLint configuration
+### Test Credentials
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Email: "<bowwwiee@gmail.com>"
+- Password: 123456
 
-- Configure the top-level `parserOptions` property like this:
+## 🛠 Tech Stack
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- React 18
+- TypeScript
+- TailwindCSS
+- React Query
+- React Router Dom
+- Zustand
+- Axios
+
+## ✨ Features
+
+- 📊 Dashboard Overview
+- 💰 Transaction Management
+- 📱 Responsive Design
+- 🔐 User Authentication
+- 💼 Budget Planning
+- 📈 Financial Reports
+
+## 🚧 Project Status
+
+The integration with the backend API is currently in progress. Features that are being implemented:
+
+- Account Management
+- Transaction History
+- Budget Tracking
+- Category Management
+- Financial Reports
+
+## 🏗 Setup & Installation
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/yourusername/majestic-wallet.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2.Install dependencies
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+cd majestic-wallet
+npm install
 ```
+
+3.Start the development server
+
+```bash
+npm run dev
+```
+
+
+📚 Documentation
+For detailed documentation about the API endpoints and integration, please refer to the backend documentation.
+
+🤝 Contributing
+Contributions, issues, and feature requests are welcome!
+
+📄 License
+This project is licensed under the MIT License.
+
+Link to the backend: [Majestic Wallet API](https://github.com/Bikaze/Taskforce_api)
+
+This project is not finished because of little time to work on it. I will continue to work on it in the future.

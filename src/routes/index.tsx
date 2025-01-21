@@ -10,6 +10,7 @@ import BudgetDetailPage from "../pages/BudgetDetailPage";
 import TransactionHistoryPage from "../pages/TransactionHistoryPage";
 import RecordTransactionPage from "../pages/RecordTransactionPage";
 import TransactionDetailPage from "../pages/TransactionDetailPage";
+import HomePage from "../pages/HomePage";
 
 const protectedRoutes: RouteObject[] = [
   {
@@ -53,6 +54,10 @@ const protectedRoutes: RouteObject[] = [
 ];
 
 const publicRoutes: RouteObject[] = [
+  {
+    path: "/",
+    element: <HomePage />,
+  },
   {
     path: "/login",
     element: <LoginPage />,

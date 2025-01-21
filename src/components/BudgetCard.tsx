@@ -1,16 +1,12 @@
-interface BudgetItem {
-  category: string;
-  spent: number;
-  budget: number;
-}
+import { Budget } from "../types/budget";
 
 interface BudgetCardProps {
-  budgets: BudgetItem[];
+  budgets: Budget[];
 }
 
 const BudgetCard: React.FC<BudgetCardProps> = ({ budgets }) => {
-  const calculatePercentage = (spent: number, budget: number) => {
-    return (spent / budget) * 100;
+  const calculatePercentage = (balance: number, amount: number) => {
+    return (balance / amount) * 100;
   };
 
   const getProgressColor = (percentage: number) => {
@@ -27,20 +23,19 @@ const BudgetCard: React.FC<BudgetCardProps> = ({ budgets }) => {
 
   return (
     <div className="bg-white p-6 rounded-xl shadow-sm">
-      <h3 className="text-xl font-semibold mb-4">Budget Overview</h3>
       <div className="space-y-4">
-        {budgets.map((item, index) => {
-          const percentage = calculatePercentage(item.spent, item.budget);
+        {budgets.map((budget, index) => {
+          const percentage = calculatePercentage(budget.balance, budget.amount);
           return (
-            <div key={index} className="space-y-2">
+            <div key={budget.id || index} className="space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-sm font-medium text-gray-700">
-                  {item.category}
+                  {budget.name}
                 </span>
                 <div className="flex items-center gap-2">
                   <span className="text-sm text-gray-600">
-                    ${item.spent.toLocaleString()} / $
-                    {item.budget.toLocaleString()}
+                    {budget.balance.toLocaleString()} /{" "}
+                    {budget.amount.toLocaleString()} RWF
                   </span>
                   <span
                     className={`text-sm font-medium ${getTextColor(

@@ -1,10 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import BalanceCard from "../components/BalanceCard";
 import BudgetCard from "../components/BudgetCard";
 import CategoryItem from "../components/CategoryItem";
 import Header from "../components/Header";
 import TransactionTable from "../components/TransactionTable";
+import { Budget } from "../types/budget";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   const transactions = [
     {
       name: "Salary Deposit",
@@ -30,11 +34,11 @@ const Dashboard = () => {
     { name: "Investment", balance: 2000, color: "#FFBB28" },
   ];
 
-  const budgets = [
-    { category: "Shopping", spent: 800, budget: 1000 },
-    { category: "Food & Drinks", spent: 950, budget: 1000 },
-    { category: "Transportation", spent: 1200, budget: 1000 },
-    { category: "Housing", spent: 2800, budget: 3000 },
+  const budgets: Budget[] = [
+    { id: "1", name: "Shopping", amount: 1000, balance: 800, startDate: "2023-01-01", endDate: "2023-01-31" },
+    { id: "2", name: "Food & Drinks", amount: 1000, balance: 950, startDate: "2023-01-01", endDate: "2023-01-31" },
+    { id: "3", name: "Transportation", amount: 1000, balance: 1200, startDate: "2023-01-01", endDate: "2023-01-31" },
+    { id: "4", name: "Housing", amount: 3000, balance: 2800, startDate: "2023-01-01", endDate: "2023-01-31" },
   ];
 
   return (
@@ -57,7 +61,10 @@ const Dashboard = () => {
         <div className="space-y-4 lg:space-y-6">
           <div className="flex justify-between items-center">
             <h3 className="text-xl font-semibold">My Budgets</h3>
-            <button className="text-blue-500 hover:text-blue-600 transition-colors">
+            <button
+              onClick={() => navigate("/budgets/new")}
+              className="text-blue-500 hover:text-blue-600 transition-colors"
+            >
               + Create Budget
             </button>
           </div>

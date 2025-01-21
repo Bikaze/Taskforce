@@ -5,6 +5,8 @@ import RegisterPage from "../pages/auth/RegisterPage";
 import Dashboard from "../pages/Dashboard";
 import BanksPage from "../pages/BanksPage";
 import BankDetailPage from "../pages/BankDetailPage";
+import BudgetsPage from "../pages/BudgetsPage";
+import BudgetDetailPage from "../pages/BudgetDetailPage";
 
 const protectedRoutes: RouteObject[] = [
   {
@@ -22,6 +24,14 @@ const protectedRoutes: RouteObject[] = [
       {
         path: "banks/:id",
         element: <BankDetailPage />,
+      },
+      {
+        path: "budgets",
+        element: <BudgetsPage />,
+      },
+      {
+        path: "budgets/:id",
+        element: <BudgetDetailPage />,
       },
     ],
   },

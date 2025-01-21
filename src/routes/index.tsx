@@ -8,6 +8,8 @@ import BankDetailPage from "../pages/BankDetailPage";
 import BudgetsPage from "../pages/BudgetsPage";
 import BudgetDetailPage from "../pages/BudgetDetailPage";
 import TransactionHistoryPage from "../pages/TransactionHistoryPage";
+import RecordTransactionPage from "../pages/RecordTransactionPage";
+import TransactionDetailPage from "../pages/TransactionDetailPage";
 
 const protectedRoutes: RouteObject[] = [
   {
@@ -37,6 +39,14 @@ const protectedRoutes: RouteObject[] = [
       {
         path: "transactions",
         element: <TransactionHistoryPage />,
+      },
+      {
+        path: "transactions/:id",
+        element: <TransactionDetailPage />,
+      },
+      {
+        path: "record",
+        element: <RecordTransactionPage />,
       },
     ],
   },

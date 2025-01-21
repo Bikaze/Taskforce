@@ -5,26 +5,29 @@ import CategoryItem from "../components/CategoryItem";
 import Header from "../components/Header";
 import TransactionTable from "../components/TransactionTable";
 import { Budget } from "../types/budget";
+import { Transaction } from "../types/transaction";
 
 const Dashboard = () => {
   const navigate = useNavigate();
 
-  const transactions = [
+  const transactions: Transaction[] = [
     {
-      name: "Salary Deposit",
-      amount: 5000.0,
-      type: "income" as "income",
-      date: "Wed, Apr 24, 5:30 AM",
-      bank: "BK",
-      category: "Salary",
+      id: "1",
+      accountId: "default" as any,
+      type: "INCOME",
+      amount: 5000,
+      note: "Salary Deposit",
+      date: new Date(),
+      categoryId: "salary" as any,
     },
     {
-      name: "Uber Ride",
+      id: "2",
+      accountId: "default" as any,
+      type: "EXPENSE",
       amount: 25.4,
-      type: "expense" as "expense",
-      date: "Wed, Apr 24, 5:30 AM",
-      bank: "Equity",
-      category: "Travel",
+      note: "Uber Ride",
+      date: new Date(),
+      categoryId: "transport" as any,
     },
   ];
 
@@ -35,10 +38,38 @@ const Dashboard = () => {
   ];
 
   const budgets: Budget[] = [
-    { id: "1", name: "Shopping", amount: 1000, balance: 800, startDate: "2023-01-01", endDate: "2023-01-31" },
-    { id: "2", name: "Food & Drinks", amount: 1000, balance: 950, startDate: "2023-01-01", endDate: "2023-01-31" },
-    { id: "3", name: "Transportation", amount: 1000, balance: 1200, startDate: "2023-01-01", endDate: "2023-01-31" },
-    { id: "4", name: "Housing", amount: 3000, balance: 2800, startDate: "2023-01-01", endDate: "2023-01-31" },
+    {
+      id: "1",
+      name: "Shopping",
+      amount: 1000,
+      balance: 800,
+      startDate: "2023-01-01",
+      endDate: "2023-01-31",
+    },
+    {
+      id: "2",
+      name: "Food & Drinks",
+      amount: 1000,
+      balance: 950,
+      startDate: "2023-01-01",
+      endDate: "2023-01-31",
+    },
+    {
+      id: "3",
+      name: "Transportation",
+      amount: 1000,
+      balance: 1200,
+      startDate: "2023-01-01",
+      endDate: "2023-01-31",
+    },
+    {
+      id: "4",
+      name: "Housing",
+      amount: 3000,
+      balance: 2800,
+      startDate: "2023-01-01",
+      endDate: "2023-01-31",
+    },
   ];
 
   return (
